@@ -369,7 +369,6 @@ kubectl delete bucket.kubecon.org hello-bucket
 Delete the service account, the role and the service account key you created
 during the installation.
 ```bash 
-gcloud iam service-accounts keys delete
-gcloud iam service-accounts delete cloud-native-tr-sa
-gcloud iam roles delete cloud_native_tr_bucket
+gcloud iam service-accounts delete "cloud-native-heroku-sa@${GCP_PROJECT_ID}.iam.gserviceaccount.com"cloud-native-tr-sa
+gcloud iam roles delete --project ${GCP_PROJECT_ID} encrypted_bucket
 ```
