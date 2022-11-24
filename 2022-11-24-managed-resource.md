@@ -122,6 +122,7 @@ spec:
 
 Create a `Bucket` resource.
 ```yaml
+# cat <<EOF | kubectl apply -f - (then Shift+Enter, paste the content, Shift+Enter, EOF, Enter)
 apiVersion: storage.gcp.upbound.io/v1beta1
 kind: Bucket
 metadata:
@@ -148,7 +149,6 @@ kubectl delete bucket cloud-native-tr
 
 Delete the GCP service account, the role and the key we created in GCP. 
 ```bash
-gcloud iam service-accounts keys delete
-gcloud iam service-accounts delete cloud-native-tr-sa
-gcloud iam roles delete cloud_native_tr_bucket
+gcloud iam service-accounts delete "cloud-native-tr-sa@${GCP_PROJECT_ID}.iam.gserviceaccount.com"cloud-native-tr-sa
+gcloud iam roles delete --project ${GCP_PROJECT_ID} cloud_native_tr_bucket
 ```
